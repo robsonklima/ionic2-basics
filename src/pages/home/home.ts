@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UsersPage } from '../users/users';
+import { ShopPage } from '../shop/shop';
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -6,9 +8,15 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  usersPage = UsersPage;
+  shopPage = ShopPage;
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    private navCtrl: NavController
+  ) {}
 
+  goToUsersPage() {
+    this.navCtrl.push(this.usersPage)
+      .catch((error) => console.log('Access denied, Argument was ' + error));
   }
-
 }
